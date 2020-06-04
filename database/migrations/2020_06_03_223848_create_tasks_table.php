@@ -22,7 +22,7 @@ class CreateTasksTable extends Migration
             $table->timestamps();
 
             //Set Foreign Key
-            $table->foreign('folder_id')->references('id')->on('folders');
+//            $table->foreign('folder_id')->references('id')->on('folders');
 
         });
     }
