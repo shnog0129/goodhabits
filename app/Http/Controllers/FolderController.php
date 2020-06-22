@@ -21,8 +21,6 @@ class FolderController extends Controller
             $folder->save();
 
 
-            return redirect()->route('tasks.index', [
-    'id' => $folder->id,
-]);
+            return redirect()->route('tasks.index', [ 'id' => $folder->id,]);
         }      
 }
