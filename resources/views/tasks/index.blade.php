@@ -65,7 +65,7 @@
                     <td>{{$task->title}}</td>
                     <td><span class="label {{$task->status_class}}">{{$task->status_label}}</span></td>
                     <td>{{$task->due_date}}</td>
-                    <td><a href="#">Edit</a></td>
+                    <td><a href="{{route('tasks.edit', ['id' => $task->folder_id, 'task_id' => $task->id])}}">Edit</a></td>
                 </tr>
             @endforeach
         </tbody>            

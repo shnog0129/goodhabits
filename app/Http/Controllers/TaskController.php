@@ -31,7 +31,7 @@ class TaskController extends Controller
         return view('tasks/create', ['folder_id' => $id]);
     }
 
-    
+
     public function create(int $id, CreateTask $request)
     {
 
@@ -44,5 +44,31 @@ class TaskController extends Controller
     $current_folder->tasks()->save($task);
 
     return redirect()->route('tasks.index', ['id' => $current_folder->id]);
+    }
+
+/**
+ * GET /folders/{id}/tasks/{task_id}/edit
+ */
+    public function showEditForm(int $id, int $task_id)
+    {
+        $task = Task::find($task_id);
+        
+        return view('tasks/edit', ['task' => $task,]);
+    }
+
+
+//    public function Edit(int $id, int $task_id)
+    public function Edit(int $id, int $task_id, Request $request)
+
+    {
+        $task = Task::find($task_id);
+
+        $task->title = $request->title;
+        $task->status = $request->status;
+        $task->due_date = $request->due_date;
+        
+        $task->save();
+
+        return redirect()->route('tasks.index', [ 'id' => $task->folder_id,]);
     }
 }
